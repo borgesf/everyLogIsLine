@@ -2,13 +2,23 @@
 
 Every log–log plot is a straight line, and I’m tired of pretending it isn’t.
 
-This figure is a small reality check: same data, same points, same noise, two different axis choices. On the left, linear axes show the curve for what it is, a smooth non-power-law trend with visibly uneven scatter. On the right, log-log axes politely iron out the drama and suggest a cleaner relationship than the data actually earned. If you squint long enough, everything starts to look like a scaling law, which is exactly how bad habits become conventions.
+This repository exists to stage a tiny visual trap in plain sight. The two panels above show the same synthetic dataset generated from a smooth, strictly positive, non-power-law function. Nothing dramatic changes between panels except coordinates. On linear axes, you see ordinary curvature and visibly uneven scatter. On log–log axes, the same points become suspiciously disciplined, as if the universe finally signed off on a scaling law. It did not. The geometry changed, not the mechanism.
 
-The setup is deliberately simple. Let the observed variable be y = f(x) + epsilon, where f(x) is the underlying smooth signal and epsilon is additive noise with mean zero. For positive y, a first-order expansion around f(x) gives log(y) = log(f(x) + epsilon) approximately log(f(x)) + epsilon / f(x), as long as |epsilon| / f(x) is small. That quotient is the trick. The same absolute perturbation gets divided by the local signal magnitude, so large f(x) regions absorb noise and look calm, while small f(x) regions keep more visible roughness. The plot did not become cleaner because physics got cleaner; it became cleaner because the coordinate transform rescaled the error.
+The setup is intentionally boring. We start from an additive model, $y=f(x)+\varepsilon$, with $f(x)>0$ and noise $\varepsilon$ centered at zero. For small relative perturbations, a first-order expansion gives
 
-This also shows up directly in variance. If epsilon_log denotes the transformed perturbation term, then Var(epsilon_log) approximately Var(epsilon) / f(x)^2 under the same small-noise assumption. In plain language, the vertical spread shrinks where the signal is large. A wide dynamic range plus a log transform is often enough to make random clutter look like disciplined structure. That can be useful for visualization, but it is not evidence by itself of a true power law.
+$$\log y = \log(f(x)+\varepsilon) \approx \log f(x) + \frac{\varepsilon}{f(x)}.$$
 
-So yes, use log-log plots when they help reveal multiplicative behavior or broad-scale trends. Just do not confuse geometric cosmetics with model validation. A straight-looking segment in transformed coordinates is a hypothesis generator, not a verdict. If the line matters, test the model in the original space, inspect residuals, and ask whether the mechanism truly implies scaling. Otherwise, congratulations: you successfully fit an optical illusion.
+That fraction is the entire trick. Log space turns absolute error into relative error by dividing by signal level. If $f(x)$ grows across decades of $x$, then the same additive noise contributes less visual vertical spread at larger $x$. The plot looks cleaner where the signal is large, even if the underlying additive uncertainty has not improved by a single bit.
+
+Variance tells the same story with less poetry. Under the same small-noise approximation,
+
+$$\mathrm{Var}(\varepsilon_{\log}) \approx \frac{\mathrm{Var}(\varepsilon)}{f(x)^2}.$$
+
+So yes, uncertainty is compressed in log coordinates when $f(x)$ is large. This is mathematically legitimate and often useful, but it is also an invitation to over-interpret tidy-looking trends. A broad dynamic range plus coordinate compression can make mediocre structure look like deep law.
+
+There is another subtlety: local elasticity. The quantity $d\log y / d\log x$ can drift slowly over a finite interval even when the global model is not a power law. In practice, that means a curved relationship can produce a log–log segment that appears almost straight over the exact range someone happened to plot. If the aesthetic reward is high enough, confirmation bias does the rest.
+
+None of this is an argument against log transforms. They are essential in many domains, especially when multiplicative processes dominate or when dynamic ranges span orders of magnitude. The point is narrower and less glamorous: a straight-ish line on a log–log chart is a hypothesis prompt, not a conclusion. If the exponent matters, validate in original space, inspect residuals, compare alternative models, and check whether the governing physics actually predicts scaling. Otherwise, the clean line is mostly a coordinate artifact wearing a lab coat.
 
 ---
 Filipe Borges
