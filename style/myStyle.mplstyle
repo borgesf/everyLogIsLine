@@ -1,0 +1,38 @@
+# General
+figure.figsize: 10, 4
+figure.dpi: 100
+savefig.dpi: 300
+savefig.format: png
+savefig.bbox: tight
+
+# Fonts (Serif required)
+font.family: serif
+font.size: 12
+axes.titlesize: 13
+axes.labelsize: 12
+xtick.labelsize: 11
+ytick.labelsize: 11
+legend.fontsize: 11
+
+# Axes
+axes.grid: False
+axes.spines.top: False
+axes.spines.right: False
+axes.linewidth: 1.0
+axes.labelpad: 8
+
+# Lines
+lines.linewidth: 2.0
+lines.markersize: 6
+
+# Colormaps
+image.cmap: viridis
+
+# Legend
+legend.frameon: False
+
+# Ticks
+xtick.direction: out
+ytick.direction: out
+xtick.major.size: 4
+ytick.major.size: 4

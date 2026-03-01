@@ -1,109 +1,15 @@
-# Creating Scientific Plots in Python
+![Linear vs log–log](/assets/loglog_vs_linear.png)
 
-This repository contains the **Knowvember 2025** notebook *Creating Scientific Plots in Python*, focused on producing high-quality, readable, and consistent scientific figures using **Python** and **Matplotlib**.
+Every log–log plot is a straight line, and I’m tired of pretending it isn’t.
 
-All examples are functional and ready to run. Some blocks are commented for teaching purposes.
+This figure is a small reality check: same data, same points, same noise, two different axis choices. On the left, linear axes show the curve for what it is, a smooth non-power-law trend with visibly uneven scatter. On the right, log-log axes politely iron out the drama and suggest a cleaner relationship than the data actually earned. If you squint long enough, everything starts to look like a scaling law, which is exactly how bad habits become conventions.
 
----
+The setup is deliberately simple. Let the observed variable be y = f(x) + epsilon, where f(x) is the underlying smooth signal and epsilon is additive noise with mean zero. For positive y, a first-order expansion around f(x) gives log(y) = log(f(x) + epsilon) approximately log(f(x)) + epsilon / f(x), as long as |epsilon| / f(x) is small. That quotient is the trick. The same absolute perturbation gets divided by the local signal magnitude, so large f(x) regions absorb noise and look calm, while small f(x) regions keep more visible roughness. The plot did not become cleaner because physics got cleaner; it became cleaner because the coordinate transform rescaled the error.
 
-## Overview
+This also shows up directly in variance. If epsilon_log denotes the transformed perturbation term, then Var(epsilon_log) approximately Var(epsilon) / f(x)^2 under the same small-noise assumption. In plain language, the vertical spread shrinks where the signal is large. A wide dynamic range plus a log transform is often enough to make random clutter look like disciplined structure. That can be useful for visualization, but it is not evidence by itself of a true power law.
 
-The notebook walks through a full plotting workflow:
-
-0. Environment setup (libraries, imports, datasets)  
-1. Start with a basic plot  
-2. Titles, axis labels, and units  
-3. Fonts and text readability  
-4. Axis limits and focus  
-5. Figure size and layout  
-6. Aspect ratio for spatial / geographic data  
-7. Colour scales and colormaps  
-8. Colorblind- and grayscale-friendly maps  
-9. Consistency across plots  
-10. Exporting high-quality figures  
-
-The examples use ERA5 climate data (temperature and rainfall over Scandinavia) and include helper functions for consistent map styling, grayscale colormaps, and color-vision-deficiency simulation.
+So yes, use log-log plots when they help reveal multiplicative behavior or broad-scale trends. Just do not confuse geometric cosmetics with model validation. A straight-looking segment in transformed coordinates is a hypothesis generator, not a verdict. If the line matters, test the model in the original space, inspect residuals, and ask whether the mechanism truly implies scaling. Otherwise, congratulations: you successfully fit an optical illusion.
 
 ---
-
-## Quick Start
-
-Run the notebook directly on [Google Colab](https://colab.research.google.com/github/borgesf/scientificPlotsPython_knowvember25/blob/main/2025_11_scientificPlots_Knowvember25_codeOnly.ipynb) or locally with:
-
-```bash
-pip install numpy matplotlib pandas geopandas xarray requests cmocean[plots]
-```
-
-Then execute the notebook cells in order.  
-Datasets and GeoJSON boundaries download automatically.
-
----
-
-## Binder Launch
-
-You can also open and run this notebook interactively in your browser via **Binder** (no installation required):
-
-[![Launch Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/borgesf/scientificPlotsPython_knowvember25/HEAD)
-
----
-
-## Helper Functions
-
-- `style_scandinavia_map()` – consistent map styling (axes, title, colorbar, optional markers)  
-- `build_grayscale_cmap()` – convert any colormap to a perceptual grayscale (CAM02-UCS J′)  
-- `simulate_partial_color_blind()` – partial red-green deficiency (Machado 2009)  
-- `simulate_full_color_blind()` – full green-cone loss (Brettel 1997)
-
----
-
-## Example Topics
-
-- Controlling figure size, fonts, and labels  
-- Choosing perceptually uniform colormaps (`cmocean`)  
-- Ensuring accessibility (color-blind-friendly, grayscale-friendly)  
-- Exporting publication-ready figures (PNG 400 DPI / SVG)  
-
----
-
-## References
-
-- [nicePythonPlots (GitHub)](https://github.com/borgesf/nicePythonPlots)  
-- [Medium: How to Create Professional and Readable Scientific Plots in Python](https://medium.com/@FilipeBorgesBR/how-to-create-professional-and-readable-scientific-plots-in-python-72f1defed8b3)  
-- [Matplotlib colormaps](https://matplotlib.org/stable/users/explain/colors/colormaps.html)  
-- [cmocean colormaps](https://matplotlib.org/cmocean/)  
-- [Copernicus ERA5 monthly means dataset](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-monthly-means?tab=download#variable)  
-- [Coblis color-blindness simulator](https://www.color-blindness.com/coblis-color-blindness-simulator/)
-
----
-
-## Key Papers
-
-- **Machado G. M., Oliveira M. M., & Fernandes L. A. F. (2009)**  
-  *A Physiologically-based Model for Simulation of Color Vision Deficiency.*  
-  *IEEE Trans. Visualization and Computer Graphics*, 15(6), 1291-1298.  
-  [https://doi.org/10.1109/TVCG.2009.113](https://doi.org/10.1109/TVCG.2009.113)
-
-- **Brettel H., Viénot F., & Mollon J. D. (1997)**  
-  *Computerized Simulation of Colour Appearance for Dichromats.*  
-  *Journal of the Optical Society of America A*, 14(10), 2647-2655.  
-  [https://doi.org/10.1364/JOSAA.14.002647](https://doi.org/10.1364/JOSAA.14.002647)
-
-- **Li C. et al. (2017)**  
-  *Comprehensive Colour Solutions: CAM16, CAT16, and CAM16-UCS.*  
-  *Color Research & Application*, 42(6), 703-718.  
-  [https://doi.org/10.1002/col.22131](https://doi.org/10.1002/col.22131)
-
----
-
-## License
-
-MIT License — use, modify, and share freely with proper attribution.
-
----
-
-## Citation
-
-If you use this material, please cite:
-
-**Filipe Borges (2025).** *Creating Scientific Plots in Python — Knowvember 2025 Workshop.*  
-Available at: [https://github.com/borgesf/scientificPlotsPython_knowvember25](https://github.com/borgesf/scientificPlotsPython_knowvember25)
+Filipe Borges
+f3l5p7@yahoo.com.br
