@@ -1,4 +1,4 @@
-# Every log-log plot is a straight line (almost)
+# loglog-linearity
 
 Compact, reproducible companion repository for the Medium post on how smooth non-power-law curves can look deceptively linear on log-log axes over finite intervals.
 
@@ -30,7 +30,7 @@ pip install -r requirements.txt
 2. Open and run the notebook:
 
 ```bash
-jupyter notebook notebooks/loglog_illusion.ipynb
+jupyter notebook notebooks/loglog_linearity.ipynb
 ```
 
 3. Run the final export cell to regenerate:
@@ -39,7 +39,7 @@ jupyter notebook notebooks/loglog_illusion.ipynb
 - `assets/loglog_exponential_fit.png`
 - `assets/loglog_cubic_fit.png`
 - `assets/loglog_summary_cases.png`
-- `notebooks/loglog_illusion.html`
+- `notebooks/loglog_linearity.html`
 
 ## Note
 

@@ -7796,15 +7796,14 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=25948a41">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=add1e3fb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="Every-log-log-plot-is-a-straight-line,-and-I'm-tired-of-pretending-it-isn't">Every log-log plot is a straight line, and I'm tired of pretending it isn't<a class="anchor-link" href="#Every-log-log-plot-is-a-straight-line,-and-I'm-tired-of-pretending-it-isn't">¶</a></h1><p>This notebook compares three positive models under additive Gaussian noise: a true power law, an exponential curve, and a cubic polynomial. The goal is practical rather than rhetorical: show when log-log straightness is theoretically justified, and when it only looks persuasive over a limited range. All cases use the same visual protocol so the comparison is fair.</p>
 <hr/>
-<p>Filipe Borges
-f3l5p7@yahoo.com.br</p>
+<p>Filipe Borges</p>
 </div>
 </div>
 </div>
@@ -7995,7 +7994,7 @@ f3l5p7@yahoo.com.br</p>
     <span class="n">fig_summary</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">fig_summary</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">export_notebook_to_html</span><span class="p">(</span><span class="n">notebook_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">html_name</span><span class="o">=</span><span class="s2">"loglog_illusion.html"</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">export_notebook_to_html</span><span class="p">(</span><span class="n">notebook_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">html_name</span><span class="o">=</span><span class="s2">"loglog_linearity.html"</span><span class="p">):</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">nbformat</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">nbconvert</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTMLExporter</span>
     <span class="k">if</span> <span class="n">notebook_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -8019,7 +8018,7 @@ f3l5p7@yahoo.com.br</p>
     <span class="n">html_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">html_path</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">generate_plot_figures</span><span class="p">(</span><span class="n">notebook_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">export_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">html_name</span><span class="o">=</span><span class="s2">"loglog_illusion.html"</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_plot_figures</span><span class="p">(</span><span class="n">notebook_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">export_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">html_name</span><span class="o">=</span><span class="s2">"loglog_linearity.html"</span><span class="p">):</span>
     <span class="n">assets_dir</span> <span class="o">=</span> <span class="n">resolve_assets_dir</span><span class="p">()</span>
     <span class="n">fig_power</span> <span class="o">=</span> <span class="n">plot_case_fit_figure</span><span class="p">(</span><span class="n">x_power</span><span class="p">,</span> <span class="n">y_true_power</span><span class="p">,</span> <span class="n">y_noisy_power</span><span class="p">,</span> <span class="s2">"Case A: True power law"</span><span class="p">)</span>
     <span class="n">fig_exp</span> <span class="o">=</span> <span class="n">plot_case_fit_figure</span><span class="p">(</span><span class="n">x_exp</span><span class="p">,</span> <span class="n">y_true_exp</span><span class="p">,</span> <span class="n">y_noisy_exp</span><span class="p">,</span> <span class="s2">"Case B: Exponential"</span><span class="p">)</span>
@@ -8220,8 +8219,8 @@ f3l5p7@yahoo.com.br</p>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">notebook_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"loglog_illusion.ipynb"</span><span class="p">)</span> <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"loglog_illusion.ipynb"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="k">else</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"notebooks/loglog_illusion.ipynb"</span><span class="p">)</span>
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">generate_plot_figures</span><span class="p">(</span><span class="n">notebook_path</span><span class="o">=</span><span class="n">notebook_path</span><span class="p">,</span> <span class="n">export_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">html_name</span><span class="o">=</span><span class="s2">"loglog_illusion.html"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">notebook_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"loglog_linearity.ipynb"</span><span class="p">)</span> <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"loglog_linearity.ipynb"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="k">else</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"notebooks/loglog_linearity.ipynb"</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">generate_plot_figures</span><span class="p">(</span><span class="n">notebook_path</span><span class="o">=</span><span class="n">notebook_path</span><span class="p">,</span> <span class="n">export_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">html_name</span><span class="o">=</span><span class="s2">"loglog_linearity.html"</span><span class="p">)</span>
 <span class="n">outputs</span>
 </pre></div>
 </div>
@@ -8245,7 +8244,7 @@ f3l5p7@yahoo.com.br</p>
  'exponential_png': PosixPath('/Users/filipeborges/Documents/GitHub/everyLogIsLine/assets/loglog_exponential_fit.png'),
  'cubic_png': PosixPath('/Users/filipeborges/Documents/GitHub/everyLogIsLine/assets/loglog_cubic_fit.png'),
  'summary_png': PosixPath('/Users/filipeborges/Documents/GitHub/everyLogIsLine/assets/loglog_summary_cases.png'),
- 'html': PosixPath('loglog_illusion.html')}</pre>
+ 'html': PosixPath('loglog_linearity.html')}</pre>
 </div>
 </div>
 </div>
